@@ -5,38 +5,39 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-
 var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
-app.use('/users', users);
+//static routes and index redirection
+app.use(express.static("static"));
+app.get('/', function(req, res, next)
+{
+	return res.redirect('main.html');
+});
 
-/// catch 404 and forwarding to error handler
-app.use(function(req, res, next) {
+//api routes. //TODO
+
+
+// catch 404 and forwarding to error handler
+app.use(function(req, res, next)
+{
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-/// error handlers
+// error handlers
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
+// development error handler, prints stacktrace
+if (app.get('env') === 'development')
+{
+    app.use(function(err, req, res, next)
+	{
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -45,9 +46,9 @@ if (app.get('env') === 'development') {
     });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+// production error handler. no stacktraces leaked to user
+app.use(function(err, req, res, next)
+{
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
@@ -55,5 +56,9 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.listen(8080, function()
+{
+	console.log("tproj server listening on port 8080.");
+});
 
 module.exports = app;
