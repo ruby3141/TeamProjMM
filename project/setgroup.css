@@ -1,0 +1,58 @@
+body{
+	background-color: #AAAAAA;
+	font-color : ;
+}
+h1{
+	color: #0055DD;
+	font-size: 60px;
+}
+.button, h1{
+	text-align: center;
+}
+
+.setting{
+	border: 1px solid #A0F8FF;
+	border-radius: 12px;
+	background-color: #DAF8FF;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 30px;
+	padding-left: 30px;
+	width: 800px;
+	height: 400px;	
+}
+
+#gName,#gName ~ input{
+	margin-bottom: 35px;
+}
+input[type="text"],input[type="email"]{
+	border-color:#A0F8FF;
+	border-radius: 12px;
+	width: 400px;
+	height: 25px;
+}
+select {
+    width: 150px;
+    height: 25px;
+    padding-left: 10px;
+    font-size: 15px;
+    border-color : #A0F8FF;
+    border-radius: 12px;
+}
+label {
+	float: left;
+	margin-right: 5em;
+	text-align: right;
+	width: 7em;
+}
+input[type="button"]{
+	margin-top: 30px;
+	margin-left: 15px;
+	width: 200px;
+	height: 40px;
+	background-color: white;
+	font-size: 15px;
+    border-color : #A0F8FF;
+    border-radius: 12px;
+}
+

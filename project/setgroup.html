@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>조 설정 화면</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js" type="text/javascript"></script>
+	<script src= "setgroup.js?ver=1" type="text/javascript"></script>
+	<link href= "setgroup.css?ver=1" type="text/css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+	<h1>
+		MAKE NOW
+	</h1>
+	<br/>
+		<form>
+			<div class="setting">
+				<label class ="top" for="gName">room name</label> 
+				<input id="gName" type="text" name="gName">
+				<br/>
+				<label for="mName">master name</label> 
+				<input id="mName" type="text" name="mName">
+				<br/>
+				<label for="tel">telephone</label> 
+				<input id="tel" type="text" name="tell">
+				<br/>
+				<label for="email">email</label> 
+				<input id="email" type="email" name="email">
+				<br/>
+				<label for="date">deadline</label> 
+				<input id="date" type="date" name="date">
+				<br/>
+				<label for="person">number of person</label> 
+				<select id="person" name="person">
+		  			<option>3 man</option>
+		  			<option>4 man</option>
+		  			<option selected="selected">5 man</option>
+		  			<option>6 man</option>
+				</select>
+				<br/>
+			</div>
+			<div class="button">
+				<input id="make" type="button" name="mg" value="make room">
+				<input id="back" name="" type="button" value="back">
+			</div>
+		</form>
+
+</body>
+</html>

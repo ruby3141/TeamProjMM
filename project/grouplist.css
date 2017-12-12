@@ -1,0 +1,87 @@
+body{
+	background-image: url("team_img.jpg");
+	background-repeat: no-repeat;
+	background-size: 1600px 800px;
+}
+
+h1{
+	background-color : purple;
+	border-radius: 12px;
+	text-align: center;
+	color: white;
+	font-size: 50px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.list{
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	height: 70%;
+	background-color: #DAF8FF;
+	border-radius: 12px; 
+}
+
+.target{
+	text-align: center;
+}
+
+
+#rn{
+	display: inline;
+	border-right: 1px solid black;
+	float: left;
+	width: 13%;
+}
+
+#title{
+	display: inline;
+	border-right: 1px solid black;
+	float: left;
+	width: 30%;
+}
+
+#nop{
+	display: inline;
+	border-right: 1px solid black;
+	float: left;
+	width: 15%;
+}
+
+#master{
+	display: inline;
+	border-right: 1px solid black;
+	float: left;
+	width: 13%;
+}
+
+#deadline{
+	display: inline;
+	border-right: 1px solid black;
+	float: left;
+	width: 10%;
+}
+
+#enter{
+	display: inline;
+	float: left;
+	width: 12%;
+}
+
+input[type="button"]{
+	display: inline;
+	float: left;
+	width: 18%;
+	background-color: white;
+	font-size: 15px;
+    border-color : #DAF8FF;
+    border-radius: 12px;
+}
+
+.list div{
+	border-top: 1px solid black;
+	clear: both;
+}
+
