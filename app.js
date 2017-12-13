@@ -20,8 +20,23 @@ app.get('/', function(req, res, next)
 	return res.redirect('main.html');
 });
 
-//api routes. //TODO
+//login check. return 401 when user request nonstatic contents without login.
+app.use(function(req, res, next)
+{
+	if(false) //TODO: fill up for login token check
+	{
+		var err = new Error("Not Authentificated");
+		err.status = 401;
+		res.status(401);
+		res.render('error', {
+			message: err.message,
+			error: err
+		});
+	}
+	else next();
+})
 
+//TODO: api routes
 
 // catch 404 and forwarding to error handler
 app.use(function(req, res, next)
@@ -32,7 +47,6 @@ app.use(function(req, res, next)
 });
 
 // error handlers
-
 // development error handler, prints stacktrace
 if (app.get('env') === 'development')
 {
