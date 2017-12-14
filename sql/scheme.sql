@@ -2,6 +2,7 @@ create table student
 (
 	sid integer primary key autoincrement,
 	name char not null,
+	strid char not null,
 	password char not null
 );
 
