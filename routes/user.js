@@ -2,7 +2,8 @@ var express = require('express');
 var sqlite3 = require('sqlite3');
 var jwt = require('jsonwebtoken');
 
-var config = require('./config');
+var config = require('../config');
+var router = express.Router();
 var db = new sqlite3.Database("data.db");
 
 router.post('/login', function(req, res, next)
