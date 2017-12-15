@@ -19,9 +19,9 @@ router.get('/:gid', function(req, res, next)
 {
 	jwt.verify(req.cookies["token"], config.secret, function(e, decoded)
 	{
-		if(e) var err = new error("Unauthorized");
+		if(e) var err = new Error("Unauthorized");
 		else var sid = decoded["sid"]
-		if(err) { res.status = 401; next(err); }
+		if(err) { err.status = 401; next(err); }
 		else
 		{
 			var members = [];
@@ -57,9 +57,9 @@ router.post('/add', function(req, res, next)
 {
 	jwt.verify(req.cookies["token"], config.secret, function(e, decoded)
 	{
-		if(e) var err = new error("Unauthorized");
+		if(e) var err = new Error("Unauthorized");
 		else var sid = decoded["sid"]
-		if(err) { res.status = 401; next(err); }
+		if(err) { err.status = 401; next(err); }
 		else
 		{
 			db.run("INSERT INTO sgroup(name, maxmember) VALUES(?, ?)",
