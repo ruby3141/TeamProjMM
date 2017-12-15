@@ -30,33 +30,17 @@ app.use("/api/group", api_group);
 //catch 404 and forwarding to error handler
 app.use(function(req, res, next)
 {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
-//error handlers
-//development error handler, prints stacktrace
-if (app.get('env') === 'development')
-{
-    app.use(function(err, req, res, next)
-	{
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-//production error handler. no stacktraces leaked to user
+//error handler.
 app.use(function(err, req, res, next)
 {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+	res.status(err.status || 500);
+	console.log(err);
+	res.send(err.status + " " + err.message);
 });
 
 app.listen(8080, function()

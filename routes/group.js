@@ -17,51 +17,61 @@ router.get("/list", function(req, res, next)
 
 router.get('/:gid', function(req, res, next)
 {
-	jwt(req.cookies["token"], config.secret, function(e, decoded)
+	jwt.verify(req.cookies["token"], config.secret, function(e, decoded)
 	{
 		if(e) var err = new error("Unauthorized");
 		else var sid = decoded["sid"]
+		if(err) { res.status = 401; next(err); }
+		else
+		{
+			var members = [];
+			db.each(
+				"SELECT sid, gid, name FROM member INNER JOIN student USING(sid) WHERE gid = ?"
+				, (req.params.gid),
+				function(err, row)
+				{
+					var contacts = [];
+					if(row)
+						db.each("SELECT sid, ctype, contact FROM contact WHERE sid = ?",
+						[row.sid], (err, _row) =>
+							{ contacts.push({type:_row.ctype,value:_row.contact}) },
+						function()
+						{
+							members.push({ name: row.name, contact: contacts });
+							db.get("SELECT gid, name FROM sgroup WHERE gid = ?",
+							(req.params.gid), (err, row) =>
+								{ res.json({ name: row.name, member: members }) });
+						});
+					else
+					{
+						db.get("SELECT gid, name FROM sgroup WHERE gid = ?",
+						(req.params.gid), (err, row) =>
+							{ res.json({ name: row.name, member: members }) });
+					}
+				});
+		}
 	});
-	if(err) { res.status = 401; next(err); }
-	else
-	{
-		var members = [];
-		db.each("SELECT sid, gid, name FROM member WHERE gid = ?", (req.params.gid),
-			function(err, row)
-			{
-				var contacts = [];
-				db.each("SELECT sid, ctype, contact FROM contact WHERE sid = ?", row.sid,
-				(err, _row) => { contacts.push({ type: _row.ctype, value: _row.contact }) },
-				() => { members.push({ name: row.name, contact: contacts }) });
-			},
-			function()
-			{
-				db.get("SELECT gid, name FROM sgroup WHERE gid = ?", (req.params.gid),
-				(err, row) => res.json({ name: row.name, member: members }));
-			});
-	}
 });
 
 router.post('/add', function(req, res, next)
 {
-	jwt(req.cookies["token"], config.secret, function(e, decoded)
+	jwt.verify(req.cookies["token"], config.secret, function(e, decoded)
 	{
 		if(e) var err = new error("Unauthorized");
 		else var sid = decoded["sid"]
-	});
-	if(err) { res.status = 401; next(err); }
-	else
-	{
-		if(typeof res.body.name === "string" && typeof res.body.maxmembers === "integer")
+		if(err) { res.status = 401; next(err); }
+		else
+		{
 			db.run("INSERT INTO sgroup(name, maxmember) VALUES(?, ?)",
-				(res.body.name, res.body.maxmembers),
+				[req.body.name, req.body.maxmembers],
 				function(err)
 				{
 					if(err) res.json({ success: false });
 					else db.get("SELECT MAX(gid) as gid FROM sgroup",
 					(err, row) => { res.json({ success: true, id: row.gid }) });
 				});
-	}
+		}
+	});
 });
 
 module.exports = router;
