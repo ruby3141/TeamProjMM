@@ -5,6 +5,7 @@ window.onload = function() {
 
 function moveMake(){
 	 window.location.href="setgroup.html"
+	 
 }
 
 function moveFind(){

@@ -1,7 +1,6 @@
 window.onload = function() {
    $("back").observe("click",moveOrigin);
    $("make").observe("click",moveList);
-
 };
 
 function moveOrigin(){

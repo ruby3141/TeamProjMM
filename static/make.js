@@ -1,8 +1,6 @@
 window.onload = function() {
-	
    $("conf").observe("click",make);
     $("back").observe("click",back);
-  
 };
 
 function make(){

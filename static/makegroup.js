@@ -1,5 +1,6 @@
 
 window.onload = function() {
+	
 	new Draggable("group1");
     new Draggable("group2");
     new Draggable("group3");
