@@ -1,0 +1,45 @@
+body{
+	background-color: #AAAAAA;
+}
+
+h1,.btn{
+	text-align: center;
+	font-size: 60px;
+}
+
+div{
+	border: 1px solid #A0F8FF;
+	border-radius: 12px;
+	background-color: #DAF8FF;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 30px;
+	padding-left: 30px;
+	width: 800px;
+	height: 200px;	
+}
+
+label {
+	float: left;
+	margin-right: 5em;
+	text-align: right;
+	width: 7em;
+}
+
+input[type="text"],input[type="email"]{
+	border-color:#A0F8FF;
+	border-radius: 12px;
+	width: 400px;
+	height: 25px;
+}
+
+input[type="button"]{
+	margin-top: 30px;
+	margin-left: 15px;
+	width: 200px;
+	height: 40px;
+	background-color: white;
+	font-size: 15px;
+    border-color : #A0F8FF;
+    border-radius: 12px;
+}

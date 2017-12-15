@@ -1,0 +1,23 @@
+body{
+	background-color: #AAAAAA;
+}
+
+h1{
+	text-align: center;
+	font-size: 60px;
+}
+
+div{
+	font
+}
+
+input[type="button"]{
+	margin-top: 30px;
+	margin-left: 15px;
+	width: 100px;
+	height: 30px;
+	background-color: white;
+	font-size: 15px;
+    border-color : #A0F8FF;
+    border-radius: 8px;
+}

@@ -6,6 +6,10 @@ body{
 	background-color: #AAAAAA;
 }
 
+form{
+	text-align: right;
+}
+
 input[type="button"]{
 	float: right;
 	width: 7%;
